@@ -4,7 +4,7 @@ import { Teacher } from '@prisma/client';
 
 // READ
 export const getAllTeachers = async (req:Request,res:Response)=>{
-    let teachers = await prisma.classRoom.findMany();
+    let teachers = await prisma.teacher.findMany();
     res.json(teachers);
 };
 
@@ -40,7 +40,6 @@ export const createTeacher = async (req:Request, res:Response) => {
         await prisma.teacher.create({
             data: {
                 name: c_teacher.name
-
             }
         });
 

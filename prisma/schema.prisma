@@ -21,27 +21,21 @@ model Student {
   name String
   age Int
   major Major
-  classes StudentClassRoom[]
+  classId String?
+  classRoom ClassRoom? @relation(fields: [classId], references: [id])
+  
 }
-
-model StudentClassRoom {
-  id String @id @default(uuid())
-  student Student @relation(fields: [studentId], references: [id])
-  studentId String
-  classRoom ClassRoom @relation(fields: [classId], references: [id])
-  classId String
-}
-
 model ClassRoom {
   id String @id @default(uuid())
   name String
-  students StudentClassRoom[]
-  classId String?
-  teacher Teacher?   @relation(fields: [classId], references: [id])
+  students Student[]
+  teachers Teacher[]
+  
 }
 
 model Teacher {
   id String @id @default(uuid())
   name String
-  classes ClassRoom[]
+  classId String?
+  classRoom ClassRoom? @relation(fields: [classId], references: [id])
 }
