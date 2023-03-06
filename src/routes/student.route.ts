@@ -8,7 +8,7 @@ let router = express.Router()
 router.get('/', getAllStudents);
 
 // read one student 
-router.get('/studentById', getStudentById);
+router.get('/studentById/:id', getStudentById);
 
 // create 
 router.post('/', validate(createStudentSchema), createStudent);

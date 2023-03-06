@@ -8,7 +8,28 @@ export const getAllClasses = async (req:Request,res:Response)=>{
     res.json(classes);
 };
 
-// CREATE
+// READ ONE CLASS BY ID
+export const getClassById = async (req:Request,res:Response)=>{
+
+    const { id } = req.params
+
+    try {
+
+        let user = await prisma.classRoom.findFirst({
+
+            where: {
+                id: id
+            }
+        });
+
+        res.json(user);
+
+    } catch(err) {
+
+        res.json(err);
+    }
+};
+
 // CREATE
 export const createClass = async (req:Request, res:Response) => {
 
