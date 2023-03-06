@@ -6,3 +6,5 @@ let router = express.Router()
 
 // read 
 router.get('/', getAllTeachers);
+
+export default router;
